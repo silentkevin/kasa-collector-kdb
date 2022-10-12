@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: bitnami/influxdb:1.8.5-debian-10-r264
+    environment:
+      - INFLUXDB_HTTP_AUTH_ENABLED=false
+    ports:
+      - "8086:8086"
+    networks:
+      kasa_primary_network:
+        ipv4_address: 10.10.177.10
+
+  kasa-collector:
+    container_name: kasa-collector
+    image: localdev/kasa-collector:latest
+    environment:
+      TZ: America/New_York
+      KASA_COLLECTOR_COLLECT_INTERVAL: 5
+      KASA_COLLECTOR_DEBUG: "false"
+      KASA_COLLECTOR_DEBUG_CURL: "false"
+      KASA_COLLECTOR_DEBUG_SLEEPING: "false"
+      KASA_COLLECTOR_DEVICE_HOST: 192.168.69.132,192.168.69.136
+      KASA_COLLECTOR_HOST_HOSTNAME: kasa-collector
+      KASA_COLLECTOR_INFLUXDB_PASSWORD: none
+      KASA_COLLECTOR_INFLUXDB_URL: http://influxdb:8086/write?db=kasa
+      KASA_COLLECTOR_INFLUXDB_USERNAME: none
+    networks:
+      kasa_primary_network:
+        ipv4_address: 10.10.177.20
+
+networks:
+  kasa_primary_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.177.0/24
