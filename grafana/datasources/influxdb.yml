@@ -1,16 +1,16 @@
 apiVersion: 1
 
 deleteDatasources:
-  - name: MYINFLUX
+  - name: influxdb1
     orgId: 1
 
 datasources:
-  - name: MYINFLUXDB
+  - name: influxdb1
     type: influxdb
     access: proxy
-    url: https://influxdb
-    password: if
-    user: ifp
+    url: http://influxdb:8086
+    password:
+    user:
     database: kasa
     basicAuth: false
     basicAuthUser:
