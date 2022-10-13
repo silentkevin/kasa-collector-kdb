@@ -1,18 +1,16 @@
-FROM grafana/promtail:2.2.1
+FROM ubuntu:22.10
 
-RUN apt-get update && apt-get install -y bash bc coreutils curl dumb-init jq net-tools procps python python3 sysstat vim
+RUN apt-get update && apt-get install -y bash bc coreutils curl dumb-init jq net-tools procps python3 python3-pip python3-dev sysstat telnet vim wget
 
-RUN mkdir /kasa-collector
+RUN rm -frv /kasa-collector && mkdir -p /kasa-collector
 
-COPY start.sh \
-tplink_smartplug.py \
-/kasa-collector/
+ADD entrypoint.sh /kasa-collector/entrypoint.sh
+ADD kasa_collector.py /kasa-collector/kasa_collector.py
+ADD tplink_smartplug.py /kasa-collector/tplink_smartplug.py
 
 WORKDIR /kasa-collector
 
 RUN chmod a+x *.sh
 RUN chmod a+x *.py
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-
-CMD ["/kasa-collector/start.sh"]
+ENTRYPOINT [ "/kasa-collector/entrypoint.sh" ]

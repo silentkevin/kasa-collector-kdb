@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 ##
 ## Kasa Collector - start-kasa-collector.sh
@@ -18,6 +18,12 @@
 ## ├┤ └─┐│  ├─┤├─┘├┤     │││├─┤│││├┤ └─┐
 ## └─┘└─┘└─┘┴ ┴┴  └─┘────┘└┘┴ ┴┴ ┴└─┘└─┘
 ##
+
+sleep 5
+
+env | sort
+
+sleep 5
 
 function escape_device_alias {
 
