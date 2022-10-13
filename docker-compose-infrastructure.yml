@@ -5,30 +5,31 @@ services:
     container_name: influxdb
     image: bitnami/influxdb:1.8.5-debian-10-r264
     environment:
-      - INFLUXDB_ADMIN_USER=if_user
-      - INFLUXDB_ADMIN_USER_PASSWORD=if_password
+      - INFLUXDB_ADMIN_USER=${SECRET_INFLUXDB_USER_NAME}
+      - INFLUXDB_ADMIN_USER_PASSWORD=${SECRET_INFLUXDB_PASSWORD}
     ports:
       - "38086:8086"
     volumes:
       - ./influxdb/init_scripts:/docker-entrypoint-initdb.d
+#      - ./influxdb-storage:/bitnami/influxdb/data
     networks:
       kasa_primary_network:
         ipv4_address: 10.10.177.10
 
-  chronograf:
-    container_name: chronograf
-    image: chronograf:1.9.4
-    ports:
-      - '38888:8888'
-    depends_on:
-      - influxdb
-    environment:
-      - INFLUXDB_URL=http://influxdb:8086
-      - INFLUXDB_USERNAME=if_user
-      - INFLUXDB_PASSWORD=if_password
-    networks:
-      kasa_primary_network:
-        ipv4_address: 10.10.177.20
+#  chronograf:
+#    container_name: chronograf
+#    image: chronograf:1.9.4
+#    ports:
+#      - '38888:8888'
+#    depends_on:
+#      - influxdb
+#    environment:
+#      - INFLUXDB_URL=http://influxdb:8086
+#      - INFLUXDB_USERNAME=${SECRET_INFLUXDB_USER_NAME}
+#      - INFLUXDB_PASSWORD=${SECRET_INFLUXDB_PASSWORD}
+#    networks:
+#      kasa_primary_network:
+#        ipv4_address: 10.10.177.20
 
   grafana:
     container_name: grafana
@@ -38,8 +39,11 @@ services:
     depends_on:
       - influxdb
     environment:
-      - GF_SECURITY_ADMIN_USER=gf
-      - GF_SECURITY_ADMIN_PASSWORD=gfp
+      - GF_SECURITY_ADMIN_PASSWORD=${SECRET_GRAFANA_PASSWORD}
+      - GF_SECURITY_ADMIN_USER=${SECRET_GRAFANA_USER_NAME}
+      - INFLUXDB_PASSWORD=${SECRET_INFLUXDB_PASSWORD}
+      - INFLUXDB_URL=http://${SECRET_INFLUXDB_HOST_NAME}:${SECRET_INFLUXDB_PORT}
+      - INFLUXDB_USERNAME=${SECRET_INFLUXDB_USER_NAME}
     volumes:
       - ./grafana:/etc/grafana/provisioning
     networks:

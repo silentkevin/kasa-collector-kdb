@@ -4,6 +4,11 @@ services:
   kasa-collector:
     container_name: kasa-collector
     image: localdev/kasa-collector:latest
+    environment:
+      - INFLUXDB_HOST_NAME=${SECRET_INFLUXDB_HOST_NAME}
+      - INFLUXDB_PORT=${SECRET_INFLUXDB_PORT}
+      - INFLUXDB_PASSWORD=${SECRET_INFLUXDB_PASSWORD}
+      - INFLUXDB_USER_NAME=${SECRET_INFLUXDB_USER_NAME}
     networks:
       kasa_primary_network:
         ipv4_address: 10.10.177.100

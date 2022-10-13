@@ -8,8 +8,8 @@ datasources:
   - name: influxdb1
     type: influxdb
     access: proxy
-    url: http://influxdb:8086
-    user: if_user
+    url: $INFLUXDB_URL
+    user: $INFLUXDB_USERNAME
     database: kasa
     basicAuth: false
     basicAuthUser:
@@ -19,6 +19,6 @@ datasources:
     jsonData:
       httpMode: GET
     secureJsonData:
-      password: if_password
+      password: $INFLUXDB_PASSWORD
     version: 1
     editable: true

@@ -1,7 +1,5 @@
 #!/bin/bash -x
 
-sleep 10
-
 env | sort
 
 which conda

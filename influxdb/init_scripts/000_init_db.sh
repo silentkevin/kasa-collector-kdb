@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-export INFLUX_COMMAND='influx -username if_user -password if_password'
+export INFLUX_COMMAND="influx -username ${INFLUXDB_ADMIN_USER} -password ${INFLUXDB_ADMIN_USER_PASSWORD}"
 
 $INFLUX_COMMAND -execute 'SHOW DATABASES'
 $INFLUX_COMMAND -execute 'CREATE DATABASE _internal'

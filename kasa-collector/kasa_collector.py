@@ -1,6 +1,7 @@
 import datetime
 import logging
 import asyncio
+import os
 import time
 from typing import Dict
 
@@ -17,6 +18,20 @@ log = logging.getLogger('kasa_collector')
 log.info("YAY I AM HERE")
 
 
+influxdb_host_name = os.environ["INFLUXDB_HOST_NAME"]
+influxdb_port = os.environ["INFLUXDB_PORT"]
+influxdb_user_name = os.environ["INFLUXDB_USER_NAME"]
+influxdb_password = os.environ["INFLUXDB_PASSWORD"]
+
+log.info(f"influxdb_host_name={influxdb_host_name}")
+log.info(f"influxdb_port={influxdb_port}")
+log.info(f"influxdb_user_name={influxdb_user_name}")
+log.info(f"influxdb_password={influxdb_password}")
+
+
+time.sleep(2)
+
+
 def submit_metric_to_db(metric_name: str, metric_value: float, metric_tags: Dict):
     time_str = datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
     logging.info(f"time_str={time_str}")
@@ -31,7 +46,7 @@ def submit_metric_to_db(metric_name: str, metric_value: float, metric_tags: Dict
         }
     ]
     logging.info(f"json_body={json_body}")
-    client = InfluxDBClient('ec2-52-207-133-65.compute-1.amazonaws.com', 38086, 'if_user', 'if_password', 'kasa')
+    client = InfluxDBClient(influxdb_host_name, influxdb_port, influxdb_user_name, influxdb_password, 'kasa')
     client.write_points(json_body)
 
 
@@ -68,4 +83,4 @@ if __name__ == "__main__":
 
         log.info("")
         log.info("")
-        time.sleep(1)
+        time.sleep(5)
