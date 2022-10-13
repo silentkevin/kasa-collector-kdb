@@ -5,8 +5,8 @@ services:
     container_name: influxdb
     image: bitnami/influxdb:1.8.5-debian-10-r264
     environment:
-      - INFLUXDB_DB=kasa
-      - INFLUXDB_HTTP_AUTH_ENABLED=false
+      - INFLUXDB_ADMIN_USER=if_user
+      - INFLUXDB_ADMIN_USER_PASSWORD=if_password
     ports:
       - "8086:8086"
     volumes:
@@ -24,6 +24,8 @@ services:
       - influxdb
     environment:
       - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_USERNAME=if_user
+      - INFLUXDB_PASSWORD=if_password
     networks:
       kasa_primary_network:
         ipv4_address: 10.10.177.20

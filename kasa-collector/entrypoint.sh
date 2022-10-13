@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-sleep 5
+sleep 10
 
 env | sort
 
@@ -11,8 +11,6 @@ ls -lah /opt/conda/envs
 whoami
 id
 /opt/conda/envs/kasa/bin/python3 --version
-
-sleep 1
 
 /opt/conda/envs/kasa/bin/python3 ./kasa_collector.py
 

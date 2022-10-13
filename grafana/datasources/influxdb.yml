@@ -9,8 +9,8 @@ datasources:
     type: influxdb
     access: proxy
     url: http://influxdb:8086
-    password:
-    user:
+    password: if_password
+    user: if_user
     database: kasa
     basicAuth: false
     basicAuthUser:
