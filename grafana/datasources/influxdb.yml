@@ -9,7 +9,6 @@ datasources:
     type: influxdb
     access: proxy
     url: http://influxdb:8086
-    password: if_password
     user: if_user
     database: kasa
     basicAuth: false
@@ -18,11 +17,8 @@ datasources:
     withCredentials:
     isDefault: true
     jsonData:
-      tlsAuth: false
-      tlsAuthWithCACert: false
+      httpMode: GET
     secureJsonData:
-      tlsCACert: ""
-      tlsClientCert: ""
-      tlsClientKey: ""
+      password: if_password
     version: 1
     editable: true

@@ -31,7 +31,7 @@ def submit_metric_to_db(metric_name: str, metric_value: float, metric_tags: Dict
         }
     ]
     logging.info(f"json_body={json_body}")
-    client = InfluxDBClient('influxdb', 8086, 'if_user', 'if_password', 'kasa')
+    client = InfluxDBClient('ec2-52-207-133-65.compute-1.amazonaws.com', 38086, 'if_user', 'if_password', 'kasa')
     client.write_points(json_body)
 
 
@@ -60,6 +60,12 @@ async def pull_power_strip_data(strip_host_name: str):
 
 if __name__ == "__main__":
     while True:
-        asyncio.run(pull_power_strip_data("192.168.69.136"))
-        asyncio.run(pull_power_strip_data("192.168.69.132"))
-        time.sleep(5)
+        try:
+            asyncio.run(pull_power_strip_data("192.168.69.136"))
+            asyncio.run(pull_power_strip_data("192.168.69.132"))
+        except Exception as e:
+            log.exception("got an error but will try again next time around")
+
+        log.info("")
+        log.info("")
+        time.sleep(1)

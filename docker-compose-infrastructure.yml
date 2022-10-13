@@ -8,7 +8,7 @@ services:
       - INFLUXDB_ADMIN_USER=if_user
       - INFLUXDB_ADMIN_USER_PASSWORD=if_password
     ports:
-      - "8086:8086"
+      - "38086:8086"
     volumes:
       - ./influxdb/init_scripts:/docker-entrypoint-initdb.d
     networks:
@@ -19,7 +19,7 @@ services:
     container_name: chronograf
     image: chronograf:1.9.4
     ports:
-      - '8888:8888'
+      - '38888:8888'
     depends_on:
       - influxdb
     environment:
@@ -34,7 +34,7 @@ services:
     container_name: grafana
     image: localdev/grafana:latest
     ports:
-      - '3000:3000'
+      - '33000:3000'
     depends_on:
       - influxdb
     environment:
@@ -45,25 +45,6 @@ services:
     networks:
       kasa_primary_network:
         ipv4_address: 10.10.177.30
-
-  kasa-collector:
-    container_name: kasa-collector
-    image: localdev/kasa-collector:latest
-    environment:
-      TZ: America/New_York
-      KASA_COLLECTOR_COLLECT_INTERVAL: 5
-      KASA_COLLECTOR_DEBUG: "true"
-      KASA_COLLECTOR_DEBUG_CURL: "true"
-      KASA_COLLECTOR_DEBUG_SLEEPING: "true"
-      KASA_COLLECTOR_DEVICE_HOST: 192.168.69.132
-#      KASA_COLLECTOR_DEVICE_HOST: 192.168.69.132,192.168.69.136
-      KASA_COLLECTOR_HOST_HOSTNAME: kasa-collector
-      KASA_COLLECTOR_INFLUXDB_PASSWORD: none
-      KASA_COLLECTOR_INFLUXDB_URL: http://influxdb:8086/write?db=kasa
-      KASA_COLLECTOR_INFLUXDB_USERNAME: none
-    networks:
-      kasa_primary_network:
-        ipv4_address: 10.10.177.100
 
 networks:
   kasa_primary_network:

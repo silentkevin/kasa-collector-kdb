@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  kasa-collector:
+    container_name: kasa-collector
+    image: localdev/kasa-collector:latest
+    networks:
+      kasa_primary_network:
+        ipv4_address: 10.10.177.100
+
+networks:
+  kasa_primary_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.177.0/24
