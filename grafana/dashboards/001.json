@@ -113,7 +113,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -248,7 +248,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -382,7 +382,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -510,7 +510,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -638,7 +638,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -767,7 +767,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -895,7 +895,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -1030,7 +1030,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -1162,7 +1162,7 @@
                     "groupBy": [
                         {
                             "params": [
-                                "10s"
+                                "$kdb_interval"
                             ],
                             "type": "time"
                         },
@@ -1269,6 +1269,16 @@
                     },
                     {
                         "selected": false,
+                        "text": "2m",
+                        "value": "2m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "5m",
+                        "value": "5m"
+                    },
+                    {
+                        "selected": false,
                         "text": "10m",
                         "value": "10m"
                     },
@@ -1313,7 +1323,7 @@
                         "value": "30d"
                     }
                 ],
-                "query": "5s,10s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+                "query": "5s,10s,30s,1m,2m,5m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
                 "refresh": 2,
                 "skipUrlSync": false,
                 "type": "interval"
