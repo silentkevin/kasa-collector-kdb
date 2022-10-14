@@ -1,4 +1,4 @@
-FROM grafana/grafana:9.1.8-ubuntu
+FROM grafana/grafana:9.2.0-ubuntu
 
 RUN whoami
 
