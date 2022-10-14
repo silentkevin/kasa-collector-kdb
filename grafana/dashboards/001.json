@@ -51,8 +51,8 @@
                             "tooltip": false,
                             "viz": false
                         },
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -68,7 +68,7 @@
                         }
                     },
                     "mappings": [],
-                    "min": 1,
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -187,7 +187,7 @@
                             "viz": false
                         },
                         "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -203,6 +203,7 @@
                         }
                     },
                     "mappings": [],
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -320,7 +321,7 @@
                             "viz": false
                         },
                         "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -336,7 +337,7 @@
                         }
                     },
                     "mappings": [],
-                    "min": 1,
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -448,7 +449,7 @@
                             "viz": false
                         },
                         "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -464,7 +465,7 @@
                         }
                     },
                     "mappings": [],
-                    "min": 1,
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -576,7 +577,7 @@
                             "viz": false
                         },
                         "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -592,7 +593,7 @@
                         }
                     },
                     "mappings": [],
-                    "min": 1,
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -704,7 +705,7 @@
                             "viz": false
                         },
                         "lineInterpolation": "linear",
-                        "lineWidth": 1,
+                        "lineWidth": 3,
                         "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
@@ -720,6 +721,8 @@
                         }
                     },
                     "mappings": [],
+                    "max": 30,
+                    "min": -1,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -804,6 +807,275 @@
                 }
             ],
             "title": "Pixel Stand Power Usage (Watts)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 50,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "normal"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 25
+            },
+            "id": 13,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "10s"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "sample_level",
+                            "operator": "=",
+                            "value": "strip"
+                        }
+                    ]
+                }
+            ],
+            "title": "Strip Power Usage Stacked by Power Strip (Watts)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 50,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "normal"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 25
+            },
+            "id": 14,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "10s"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "sample_level",
+                            "operator": "=",
+                            "value": "plug"
+                        }
+                    ]
+                }
+            ],
+            "title": "Plug Power Usage Stacked by Plug (Watts)",
             "type": "timeseries"
         }
     ],
