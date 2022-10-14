@@ -83,4 +83,4 @@ if __name__ == "__main__":
 
         log.info("")
         log.info("")
-        time.sleep(5)
+        time.sleep(2.5)
