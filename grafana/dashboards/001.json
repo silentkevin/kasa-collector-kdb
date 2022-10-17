@@ -94,7 +94,9 @@
             "id": 2,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -229,7 +231,9 @@
             "id": 4,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -363,7 +367,9 @@
             "id": 6,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -491,7 +497,9 @@
             "id": 8,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -619,7 +627,9 @@
             "id": 10,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -748,7 +758,9 @@
             "id": 12,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -876,7 +888,9 @@
             "id": 13,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -1011,7 +1025,9 @@
             "id": 14,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -1145,7 +1161,9 @@
             "id": 16,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -1297,7 +1315,9 @@
             "id": 17,
             "options": {
                 "legend": {
-                    "calcs": [],
+                    "calcs": [
+                        "lastNotNull"
+                    ],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
@@ -1382,6 +1402,137 @@
                 }
             ],
             "title": "Computer Power Usage",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 5,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "max": 30,
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 40
+            },
+            "id": 19,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L3 Mac Mini"
+                        }
+                    ]
+                }
+            ],
+            "title": "Mac Mini Power Usage",
             "type": "timeseries"
         }
     ],
