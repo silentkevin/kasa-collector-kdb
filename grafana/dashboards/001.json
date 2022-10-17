@@ -1229,6 +1229,160 @@
             ],
             "title": "Monitor Power Usage",
             "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 50,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "normal"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 32
+            },
+            "id": 17,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "query": "SELECT mean(\"value\") FROM \"current_power_usage\" WHERE (\"alias\" = 'L3 Mac Mini' OR \"alias\" = 'L4 MacBook Pro Dock' OR \"alias\" = 'R1 Home Computer') AND $timeFilter GROUP BY time($kdb_interval), \"alias\" fill(null)",
+                    "rawQuery": true,
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L3 Mac Mini"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L4 MacBook Pro Dock"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R1 Home Computer"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R4 Right Home Computer Monitor"
+                        }
+                    ]
+                }
+            ],
+            "title": "Computer Power Usage",
+            "type": "timeseries"
         }
     ],
     "refresh": "5s",
