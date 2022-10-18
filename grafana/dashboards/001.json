@@ -128,7 +128,7 @@
                     ]
                 }
             ],
-            "title": "Home Computer",
+            "title": "Home Computer Power",
             "type": "stat"
         },
         {
@@ -164,7 +164,7 @@
             },
             "gridPos": {
                 "h": 3,
-                "w": 3,
+                "w": 2,
                 "x": 6,
                 "y": 0
             },
@@ -232,7 +232,111 @@
                     ]
                 }
             ],
-            "title": "MacBook Pro",
+            "title": "MacBook Pro Power",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 300
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 3,
+                "x": 8,
+                "y": 0
+            },
+            "id": 29,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "9.2.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "last"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L4 MacBook Pro Dock"
+                        }
+                    ]
+                }
+            ],
+            "title": "Right Monitor Power",
             "type": "stat"
         },
         {
@@ -336,7 +440,111 @@
                     ]
                 }
             ],
-            "title": "Mac Mini",
+            "title": "Mac Mini Power",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 300
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 3,
+                "x": 14,
+                "y": 0
+            },
+            "id": 28,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "9.2.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "last"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L1 Left Thunderbolt Monitor"
+                        }
+                    ]
+                }
+            ],
+            "title": "Left Monitor Power",
             "type": "stat"
         },
         {
@@ -440,7 +648,7 @@
                     ]
                 }
             ],
-            "title": "Pixel Stand",
+            "title": "Pixel Stand Power",
             "type": "stat"
         },
         {
@@ -484,6 +692,7 @@
                         }
                     },
                     "mappings": [],
+                    "max": 800,
                     "min": -1,
                     "thresholds": {
                         "mode": "absolute",
@@ -614,6 +823,7 @@
                         }
                     },
                     "mappings": [],
+                    "max": 60,
                     "min": -1,
                     "thresholds": {
                         "mode": "absolute",
@@ -2388,8 +2598,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "2m",
-                    "value": "2m"
+                    "text": "1m",
+                    "value": "1m"
                 },
                 "hide": 0,
                 "name": "kdb_interval",
@@ -2410,12 +2620,12 @@
                         "value": "30s"
                     },
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "1m",
                         "value": "1m"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "2m",
                         "value": "2m"
                     },
@@ -2479,7 +2689,7 @@
         ]
     },
     "time": {
-        "from": "now-1h",
+        "from": "now-15m",
         "to": "now"
     },
     "timepicker": {},
