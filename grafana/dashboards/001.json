@@ -64,7 +64,7 @@
                 "x": 0,
                 "y": 0
             },
-            "id": 23,
+            "id": 24,
             "options": {
                 "colorMode": "value",
                 "graphMode": "none",
@@ -123,12 +123,12 @@
                         {
                             "key": "alias",
                             "operator": "=",
-                            "value": "R1 Home Computer"
+                            "value": "L3 Mac Mini"
                         }
                     ]
                 }
             ],
-            "title": "Home Computer Power",
+            "title": "Mac Mini Power",
             "type": "stat"
         },
         {
@@ -164,7 +164,111 @@
             },
             "gridPos": {
                 "h": 3,
-                "w": 2,
+                "w": 3,
+                "x": 3,
+                "y": 0
+            },
+            "id": 28,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "9.2.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "last"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L1 Left Thunderbolt Monitor"
+                        }
+                    ]
+                }
+            ],
+            "title": "Mac Mini Monitor Power",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 300
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 3,
                 "x": 6,
                 "y": 0
             },
@@ -269,7 +373,7 @@
             "gridPos": {
                 "h": 3,
                 "w": 3,
-                "x": 8,
+                "x": 9,
                 "y": 0
             },
             "id": 29,
@@ -331,12 +435,12 @@
                         {
                             "key": "alias",
                             "operator": "=",
-                            "value": "L4 MacBook Pro Dock"
+                            "value": "L2 Right Thunderbolt Monitor "
                         }
                     ]
                 }
             ],
-            "title": "Right Monitor Power",
+            "title": "MacBook Pro Monitor Power",
             "type": "stat"
         },
         {
@@ -373,10 +477,10 @@
             "gridPos": {
                 "h": 3,
                 "w": 3,
-                "x": 11,
+                "x": 12,
                 "y": 0
             },
-            "id": 24,
+            "id": 23,
             "options": {
                 "colorMode": "value",
                 "graphMode": "none",
@@ -435,12 +539,12 @@
                         {
                             "key": "alias",
                             "operator": "=",
-                            "value": "L3 Mac Mini"
+                            "value": "R1 Home Computer"
                         }
                     ]
                 }
             ],
-            "title": "Mac Mini Power",
+            "title": "Home Computer Power",
             "type": "stat"
         },
         {
@@ -477,10 +581,10 @@
             "gridPos": {
                 "h": 3,
                 "w": 3,
-                "x": 14,
+                "x": 15,
                 "y": 0
             },
-            "id": 28,
+            "id": 30,
             "options": {
                 "colorMode": "value",
                 "graphMode": "none",
@@ -508,6 +612,12 @@
                                 "$kdb_interval"
                             ],
                             "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
                         },
                         {
                             "params": [
@@ -539,12 +649,18 @@
                         {
                             "key": "alias",
                             "operator": "=",
-                            "value": "L1 Left Thunderbolt Monitor"
+                            "value": "R3 Left Home Computer Monitor"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R4 Right Home Computer Monitor"
                         }
                     ]
                 }
             ],
-            "title": "Left Monitor Power",
+            "title": "Home Computer Monitor Power",
             "type": "stat"
         },
         {
@@ -580,8 +696,8 @@
             },
             "gridPos": {
                 "h": 3,
-                "w": 3,
-                "x": 17,
+                "w": 2,
+                "x": 18,
                 "y": 0
             },
             "id": 26,
@@ -676,268 +792,6 @@
                             "viz": false
                         },
                         "lineInterpolation": "smooth",
-                        "lineWidth": 3,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": true,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "max": 800,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 0,
-                "y": 3
-            },
-            "id": 6,
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "influxdb",
-                        "uid": "P1DCE88D61E749C6D"
-                    },
-                    "groupBy": [
-                        {
-                            "params": [
-                                "$kdb_interval"
-                            ],
-                            "type": "time"
-                        },
-                        {
-                            "params": [
-                                "null"
-                            ],
-                            "type": "fill"
-                        }
-                    ],
-                    "measurement": "current_power_usage",
-                    "orderByTime": "ASC",
-                    "policy": "default",
-                    "refId": "A",
-                    "resultFormat": "time_series",
-                    "select": [
-                        [
-                            {
-                                "params": [
-                                    "value"
-                                ],
-                                "type": "field"
-                            },
-                            {
-                                "params": [],
-                                "type": "mean"
-                            }
-                        ]
-                    ],
-                    "tags": [
-                        {
-                            "key": "alias",
-                            "operator": "=",
-                            "value": "R1 Home Computer"
-                        }
-                    ]
-                }
-            ],
-            "title": "Home Computer Power Usage (Watts)",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "influxdb",
-                "uid": "P1DCE88D61E749C6D"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "smooth",
-                        "lineWidth": 3,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": true,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "max": 60,
-                    "min": -1,
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 6,
-                "w": 5,
-                "x": 6,
-                "y": 3
-            },
-            "id": 10,
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "influxdb",
-                        "uid": "P1DCE88D61E749C6D"
-                    },
-                    "groupBy": [
-                        {
-                            "params": [
-                                "$kdb_interval"
-                            ],
-                            "type": "time"
-                        },
-                        {
-                            "params": [
-                                "null"
-                            ],
-                            "type": "fill"
-                        }
-                    ],
-                    "measurement": "current_power_usage",
-                    "orderByTime": "ASC",
-                    "policy": "default",
-                    "refId": "A",
-                    "resultFormat": "time_series",
-                    "select": [
-                        [
-                            {
-                                "params": [
-                                    "value"
-                                ],
-                                "type": "field"
-                            },
-                            {
-                                "params": [],
-                                "type": "mean"
-                            }
-                        ]
-                    ],
-                    "tags": [
-                        {
-                            "key": "alias",
-                            "operator": "=",
-                            "value": "L4 MacBook Pro Dock"
-                        }
-                    ]
-                }
-            ],
-            "title": "Work MacBook Power Usage (Watts)",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "influxdb",
-                "uid": "P1DCE88D61E749C6D"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "smooth",
                         "lineWidth": 5,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -975,7 +829,7 @@
             "gridPos": {
                 "h": 6,
                 "w": 6,
-                "x": 11,
+                "x": 0,
                 "y": 3
             },
             "id": 19,
@@ -1085,6 +939,268 @@
                         }
                     },
                     "mappings": [],
+                    "max": 60,
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 6,
+                "y": 3
+            },
+            "id": 10,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L4 MacBook Pro Dock"
+                        }
+                    ]
+                }
+            ],
+            "title": "MacBook Pro Power Usage (Watts)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "max": 800,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 12,
+                "y": 3
+            },
+            "id": 6,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R1 Home Computer"
+                        }
+                    ]
+                }
+            ],
+            "title": "Home Computer Power Usage (Watts)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
                     "max": 30,
                     "min": -1,
                     "thresholds": {
@@ -1105,8 +1221,8 @@
             },
             "gridPos": {
                 "h": 6,
-                "w": 7,
-                "x": 17,
+                "w": 6,
+                "x": 18,
                 "y": 3
             },
             "id": 12,
@@ -1353,7 +1469,7 @@
                         }
                     },
                     "mappings": [],
-                    "min": -1,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -1368,32 +1484,7 @@
                         ]
                     }
                 },
-                "overrides": [
-                    {
-                        "__systemRef": "hideSeriesFrom",
-                        "matcher": {
-                            "id": "byNames",
-                            "options": {
-                                "mode": "exclude",
-                                "names": [
-                                    "current_power_usage.mean {alias: R2 Other Stuff}"
-                                ],
-                                "prefix": "All except:",
-                                "readOnly": true
-                            }
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": false,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
                 "h": 8,
@@ -2598,8 +2689,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "1m",
-                    "value": "1m"
+                    "text": "10s",
+                    "value": "10s"
                 },
                 "hide": 0,
                 "name": "kdb_interval",
@@ -2610,7 +2701,7 @@
                         "value": "5s"
                     },
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "10s",
                         "value": "10s"
                     },
@@ -2620,7 +2711,7 @@
                         "value": "30s"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "1m",
                         "value": "1m"
                     },
@@ -2689,7 +2780,7 @@
         ]
     },
     "time": {
-        "from": "now-15m",
+        "from": "now-5m",
         "to": "now"
     },
     "timepicker": {},
