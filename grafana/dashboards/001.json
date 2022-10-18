@@ -476,7 +476,7 @@
             },
             "gridPos": {
                 "h": 3,
-                "w": 3,
+                "w": 2,
                 "x": 12,
                 "y": 0
             },
@@ -580,8 +580,8 @@
             },
             "gridPos": {
                 "h": 3,
-                "w": 3,
-                "x": 15,
+                "w": 2,
+                "x": 14,
                 "y": 0
             },
             "id": 30,
@@ -660,7 +660,139 @@
                     ]
                 }
             ],
-            "title": "Home Computer Monitor Power",
+            "title": "Home Monitor Power",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 300
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 2,
+                "x": 16,
+                "y": 0
+            },
+            "id": 31,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "9.2.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "last"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R3 Left Home Computer Monitor"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "R4 Right Home Computer Monitor"
+                        }
+                    ]
+                }
+            ],
+            "title": "Home Monitor Power",
+            "transformations": [
+                {
+                    "id": "calculateField",
+                    "options": {
+                        "mode": "reduceRow",
+                        "reduce": {
+                            "include": [
+                                "current_power_usage.last {alias: R3 Left Home Computer Monitor}",
+                                "current_power_usage.last {alias: R4 Right Home Computer Monitor}"
+                            ],
+                            "reducer": "sum"
+                        },
+                        "replaceFields": true
+                    }
+                }
+            ],
             "type": "stat"
         },
         {
@@ -765,6 +897,134 @@
                 }
             ],
             "title": "Pixel Stand Power",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "P1DCE88D61E749C6D"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 500
+                            },
+                            {
+                                "color": "red",
+                                "value": 800
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 20,
+                "y": 0
+            },
+            "id": 32,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "9.2.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "alias"
+                            ],
+                            "type": "tag"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "last"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "Left Office Desk Strip"
+                        },
+                        {
+                            "condition": "OR",
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "Right Office Desk Strip"
+                        }
+                    ]
+                }
+            ],
+            "title": "Total Desk Power",
+            "transformations": [
+                {
+                    "id": "calculateField",
+                    "options": {
+                        "mode": "reduceRow",
+                        "reduce": {
+                            "reducer": "sum"
+                        },
+                        "replaceFields": true
+                    }
+                }
+            ],
             "type": "stat"
         },
         {
@@ -2689,8 +2949,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "10s",
-                    "value": "10s"
+                    "text": "10m",
+                    "value": "10m"
                 },
                 "hide": 0,
                 "name": "kdb_interval",
@@ -2701,7 +2961,7 @@
                         "value": "5s"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "10s",
                         "value": "10s"
                     },
@@ -2726,7 +2986,7 @@
                         "value": "5m"
                     },
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "10m",
                         "value": "10m"
                     },
@@ -2780,7 +3040,7 @@
         ]
     },
     "time": {
-        "from": "now-5m",
+        "from": "now-1h",
         "to": "now"
     },
     "timepicker": {},
