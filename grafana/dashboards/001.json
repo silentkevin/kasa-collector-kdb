@@ -919,7 +919,7 @@
                             },
                             {
                                 "color": "#EAB839",
-                                "value": 500
+                                "value": 600
                             },
                             {
                                 "color": "red",
@@ -2949,8 +2949,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "2m",
-                    "value": "2m"
+                    "text": "5m",
+                    "value": "5m"
                 },
                 "hide": 0,
                 "name": "kdb_interval",
@@ -2976,12 +2976,12 @@
                         "value": "1m"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "2m",
                         "value": "2m"
                     },
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "5m",
                         "value": "5m"
                     },
