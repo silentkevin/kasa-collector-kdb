@@ -894,9 +894,56 @@
                             "value": "L5 Pixel Stand"
                         }
                     ]
+                },
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "hide": false,
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "B",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L6 Watch"
+                        }
+                    ]
                 }
             ],
-            "title": "Pixel Stand Power",
+            "title": "Charger Power",
             "type": "stat"
         },
         {
@@ -1546,9 +1593,56 @@
                             "value": "L5 Pixel Stand"
                         }
                     ]
+                },
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "P1DCE88D61E749C6D"
+                    },
+                    "groupBy": [
+                        {
+                            "params": [
+                                "$kdb_interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "hide": false,
+                    "measurement": "current_power_usage",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "B",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "tags": [
+                        {
+                            "key": "alias",
+                            "operator": "=",
+                            "value": "L6 Watch"
+                        }
+                    ]
                 }
             ],
-            "title": "Pixel Stand Power Usage (Watts)",
+            "title": "Charger Power Usage (Watts)",
             "type": "timeseries"
         },
         {
@@ -2949,8 +3043,8 @@
                 "auto_min": "10s",
                 "current": {
                     "selected": false,
-                    "text": "2m",
-                    "value": "2m"
+                    "text": "1m",
+                    "value": "1m"
                 },
                 "hide": 0,
                 "name": "kdb_interval",
@@ -2971,12 +3065,12 @@
                         "value": "30s"
                     },
                     {
-                        "selected": false,
+                        "selected": true,
                         "text": "1m",
                         "value": "1m"
                     },
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "2m",
                         "value": "2m"
                     },
@@ -3040,7 +3134,7 @@
         ]
     },
     "time": {
-        "from": "now-1h",
+        "from": "now-30m",
         "to": "now"
     },
     "timepicker": {},
