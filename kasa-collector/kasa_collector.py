@@ -94,6 +94,7 @@ if __name__ == "__main__":
         asyncio.run(pull_power_strip_data("192.168.69.136"))
         asyncio.run(pull_power_strip_data("192.168.69.132"))
         asyncio.run(pull_power_plug_data("192.168.69.224"))
+        asyncio.run(pull_power_plug_data("192.168.69.159"))
 
         log.info("")
         log.info("")
