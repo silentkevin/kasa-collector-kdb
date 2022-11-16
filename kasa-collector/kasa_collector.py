@@ -93,8 +93,9 @@ if __name__ == "__main__":
     while True:
         asyncio.run(pull_power_strip_data("192.168.69.136"))
         asyncio.run(pull_power_strip_data("192.168.69.132"))
-        asyncio.run(pull_power_plug_data("192.168.69.224"))
         asyncio.run(pull_power_plug_data("192.168.69.159"))
+        asyncio.run(pull_power_plug_data("192.168.69.208"))
+        asyncio.run(pull_power_plug_data("192.168.69.224"))
 
         log.info("")
         log.info("")
