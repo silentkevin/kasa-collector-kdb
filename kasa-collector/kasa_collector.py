@@ -4,6 +4,7 @@ import asyncio
 import os
 import time
 from typing import Dict
+from concurrent.futures.thread import ThreadPoolExecutor
 
 from influxdb import InfluxDBClient
 
@@ -89,14 +90,35 @@ async def pull_power_strip_data(strip_host_name: str):
         log.error(f"got an error but will try again next time around strip_host_name={strip_host_name},message={str(e)}")
 
 
+def do_work(type: str, ip_address: str):
+    if type == "strip":
+        asyncio.run(pull_power_strip_data(ip_address))
+    else:
+        asyncio.run(pull_power_plug_data(ip_address))
+
+
 if __name__ == "__main__":
+    executor: ThreadPoolExecutor = ThreadPoolExecutor(20)
+
     while True:
-        asyncio.run(pull_power_strip_data("192.168.69.136"))
-        asyncio.run(pull_power_strip_data("192.168.69.132"))
-        asyncio.run(pull_power_plug_data("192.168.69.159"))
-        asyncio.run(pull_power_plug_data("192.168.69.208"))
-        asyncio.run(pull_power_plug_data("192.168.69.224"))
+        futures = []
+
+        futures.append(executor.submit(do_work, "strip", "192.168.69.130"))
+        futures.append(executor.submit(do_work, "strip", "192.168.69.134"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.156"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.222"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.206"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.135"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.205"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.139"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.245"))
+
+        for future in futures:
+            try:
+                future.result(5)
+            except:
+                log.exception("hit timeout")
 
         log.info("")
         log.info("")
-        time.sleep(1)
+        time.sleep(0.1)

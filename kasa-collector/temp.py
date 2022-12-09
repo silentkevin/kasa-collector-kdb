@@ -7,7 +7,7 @@ input_dir = "/Users/kbrown/tmp5/HP/HP3"
 book_num = 3
 max_disks = 10
 
-for i in range(1, max_disks - 1):
+for i in range(9, max_disks + 1):
     output_path = os.path.join(input_dir, f"HP{book_num}_Disk_{i:02d}.mp3")
     print(f"output_path={output_path} exists {os.path.exists(output_path)}")
 
