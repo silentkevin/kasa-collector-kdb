@@ -3558,7 +3558,7 @@
             }
           },
           "mappings": [],
-          "max": 150,
+          "max": 2000,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
