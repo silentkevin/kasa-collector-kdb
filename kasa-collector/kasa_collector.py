@@ -103,15 +103,13 @@ if __name__ == "__main__":
     while True:
         futures = []
 
-        futures.append(executor.submit(do_work, "strip", "192.168.69.181"))
-        futures.append(executor.submit(do_work, "strip", "192.168.69.198"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.113"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.85"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.167"))
+        futures.append(executor.submit(do_work, "strip", "192.168.69.178"))
+        futures.append(executor.submit(do_work, "strip", "192.168.69.195"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.154"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.111"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.152"))
         futures.append(executor.submit(do_work, "plug", "192.168.69.68"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.73"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.153"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.181"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.85"))
 
         for future in futures:
             try:
