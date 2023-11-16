@@ -3165,7 +3165,7 @@
             }
           },
           "mappings": [],
-          "max": 30,
+          "max": 100,
           "min": -1,
           "thresholds": {
             "mode": "absolute",
@@ -3247,7 +3247,7 @@
             {
               "key": "alias",
               "operator": "=",
-              "value": "Exercise Bike Strip"
+              "value": "KO Exercise Bike Strip"
             }
           ]
         }
