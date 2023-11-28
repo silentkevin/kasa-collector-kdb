@@ -11,7 +11,7 @@ services:
       - "38086:8086"
     volumes:
       - ./influxdb/init_scripts:/docker-entrypoint-initdb.d
-#      - ./influxdb-storage:/Users/kbrown/influxdb/data
+      - /Users/kbrown/influxdb/data:/bitnami/influxdb
     networks:
       kasa_primary_network:
         ipv4_address: 10.10.177.10

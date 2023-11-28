@@ -110,6 +110,7 @@ if __name__ == "__main__":
         futures.append(executor.submit(do_work, "plug", "192.168.69.152"))
         futures.append(executor.submit(do_work, "plug", "192.168.69.68"))
         futures.append(executor.submit(do_work, "plug", "192.168.69.85"))
+        futures.append(executor.submit(do_work, "plug", "192.168.69.167"))
 
         for future in futures:
             try:
