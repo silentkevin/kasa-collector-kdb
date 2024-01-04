@@ -103,14 +103,14 @@ if __name__ == "__main__":
     while True:
         futures = []
 
-        futures.append(executor.submit(do_work, "strip", "192.168.69.178"))
-        futures.append(executor.submit(do_work, "strip", "192.168.69.195"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.154"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.111"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.152"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.68"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.85"))
-        futures.append(executor.submit(do_work, "plug", "192.168.69.167"))
+        futures.append(executor.submit(do_work, "strip", "192.168.69.55"))  # right strip
+        futures.append(executor.submit(do_work, "strip", "192.168.69.56"))  # left strip
+        futures.append(executor.submit(do_work, "plug", "192.168.69.61"))  # exercise bike
+        futures.append(executor.submit(do_work, "plug", "192.168.69.60"))  # basement TV
+        futures.append(executor.submit(do_work, "plug", "192.168.69.62"))  # living room TV
+        futures.append(executor.submit(do_work, "plug", "192.168.69.58"))  # basement freezer
+        futures.append(executor.submit(do_work, "plug", "192.168.69.57"))  # kitchen refrigerator
+        futures.append(executor.submit(do_work, "plug", "192.168.69.59"))  # basement coffee maker
 
         for future in futures:
             try:
