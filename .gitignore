@@ -2,3 +2,4 @@
 .idea/
 *.log
 secrets.env
+.DS_Store
